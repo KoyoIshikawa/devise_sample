@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  authenticate_user!
   def index
     @items = Item.all
   end

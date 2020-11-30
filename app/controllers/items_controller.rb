@@ -1,15 +1,15 @@
 class ItemsController < ApplicationController
-  authenticate_user!
+  before_action :authenticate_user!, except: :inde
   def index
     @items = Item.all
   end
 
   def new
-    @items = Item.new
+    @item = Item.new
   end
 
   def create
-    Item.create!(name: item_params[:name],price: item_params[:price],user_id: current_user.id)
+    Item.create!(name: item_params[:name], price: item_params[:price], user_id: current_user.id)
   end
 
   private
